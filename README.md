@@ -47,6 +47,15 @@ A simple Django-based web application for managing personal tasks with user auth
       }
    }
    ```
+   SQLite (alternative for development):
+   ```python
+      DATABASES = {
+         'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+         }
+      }
+   ```
 
 5. **Apply Migrations**:
    ```bash
