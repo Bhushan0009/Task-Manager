@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm animate__animated animate__fadeIn">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Delete Task</h2>
+                <p class="text-center">Are you sure you want to delete "<strong>{{ task.title }}</strong>"?</p>
+                <form method="post" class="d-flex justify-content-center gap-3">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Permanently delete this task">
+                        <i class="fas fa-trash-alt me-1"></i> Delete
+                    </button>
+                    <a href="{% url 'task_list' %}" class="btn btn-secondary cancel-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Return to task list">
+                        <i class="fas fa-arrow-left me-1"></i> Cancel
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

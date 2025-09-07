@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm animate__animated animate__fadeIn">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">{{ action }} Task</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="{{ form.title.id_for_label }}" class="form-label">Title</label>
+                        {{ form.title|add_class:"form-control" }}
+                        {% if form.title.errors %}
+                            <div class="text-danger">{{ form.title.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+                        {{ form.description|add_class:"form-control" }}
+                        {% if form.description.errors %}
+                            <div class="text-danger">{{ form.description.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.due_date.id_for_label }}" class="form-label">Due Date</label>
+                        {{ form.due_date|add_class:"form-control" }}
+                        {% if form.due_date.errors %}
+                            <div class="text-danger">{{ form.due_date.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.status.id_for_label }}" class="form-label">Status</label>
+                        {{ form.status|add_class:"form-select" }}
+                        {% if form.status.errors %}
+                            <div class="text-danger">{{ form.status.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button type="submit" class="btn btn-primary save-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Save this task">
+                            <i class="fas fa-save me-1"></i> Save
+                        </button>
+                        <a href="{% url 'task_list' %}" class="btn btn-secondary cancel-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Return to task list">
+                            <i class="fas fa-arrow-left me-1"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

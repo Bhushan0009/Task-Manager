@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="card shadow-sm animate__animated animate__fadeIn">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Your Tasks</h2>
+                <form method="get" class="mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                <input type="text" name="q" value="{{ query }}" class="form-control" placeholder="Search by title" aria-label="Search tasks">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <select name="status" class="form-select" aria-label="Filter by status">
+                                <option value="">All Statuses</option>
+                                <option value="in_progress" {% if status == 'in_progress' %}selected{% endif %}>In Progress</option>
+                                <option value="done" {% if status == 'done' %}selected{% endif %}>Done</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 d-flex gap-2">
+                            <button type="submit" class="btn btn-primary search-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Search tasks">
+                                <i class="fas fa-search me-1"></i> Search
+                            </button>
+                            <a href="{% url 'task_create' %}" class="btn btn-success add-task-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Create a new task">
+                                <i class="fas fa-plus me-1"></i> Add Task
+                            </a>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for task in page_obj %}
+                            <tr class="task-row">
+                                <td>{{ task.title }}</td>
+                                <td>{{ task.description|truncatewords:10 }}</td>
+                                <td>{{ task.due_date }}</td>
+                                <td>{{ task.get_status_display }}</td>
+                                <td>
+                                    <a href="{% url 'task_update' task.pk %}" class="btn btn-sm btn-warning edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit this task">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="{% url 'task_delete' task.pk %}" class="btn btn-sm btn-danger delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete this task">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5" class="text-center py-4">
+                                    <p class="text-muted">No tasks found. <a href="{% url 'task_create' %}" class="text-success">Add a new task</a> to get started!</p>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                {% if page_obj.paginator.num_pages > 1 %}
+                <nav aria-label="Task pagination">
+                    <ul class="pagination justify-content-center mt-4">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}&q={{ query }}&status={{ status }}" aria-label="Previous">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% for num in page_obj.paginator.page_range %}
+                            <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                                <a class="page-link" href="?page={{ num }}&q={{ query }}&status={{ status }}">{{ num }}</a>
+                            </li>
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}&q={{ query }}&status={{ status }}" aria-label="Next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

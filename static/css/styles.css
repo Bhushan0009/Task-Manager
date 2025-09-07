@@ -1,0 +1,204 @@
+/* General body styling */
+body {
+    background-color: #f8f9fa; /* Light gray background for consistency */
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
+/* Navbar styling */
+.navbar {
+    background: linear-gradient(90deg, #e3f2fd, #bbdefb); /* Subtle gradient */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+    padding: 1rem; /* Slightly larger padding */
+}
+
+/* Navbar brand styling */
+.navbar-brand {
+    font-weight: 700; /* Bold for prominence */
+    font-size: 1.5rem; /* Larger font */
+    color: #0d6efd; /* Bootstrap primary blue */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navbar-brand:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+.navbar-brand i {
+    transition: transform 0.3s ease; /* Icon animation */
+}
+
+.navbar-brand:hover i {
+    transform: scale(1.2); /* Slight icon scaling */
+}
+
+/* Container styling */
+.container {
+    max-width: 1200px; /* Max width for content */
+    background: rgba(255, 255, 255, 0.05); /* Subtle backdrop for depth */
+    border-radius: 12px; /* Rounded corners */
+}
+
+/* Table styling */
+.table {
+    background-color: white; /* White background for tables */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+/* Card styling for forms and task lists */
+.card {
+    border: none; /* Remove default border */
+    border-radius: 12px; /* Rounded corners for elegance */
+    background-color: white; /* White background */
+}
+
+/* Card title styling */
+.card-title {
+    font-size: 1.5rem; /* Consistent title size */
+    font-weight: 600; /* Bold for emphasis */
+    color: #333; /* Dark gray for readability */
+}
+
+/* Form input and select styling */
+.form-control, .form-select {
+    border-radius: 8px; /* Rounded corners for inputs */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus transitions */
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd; /* Bootstrap primary blue on focus */
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Subtle glow */
+}
+
+/* Form label styling */
+.form-label {
+    font-weight: 500; /* Medium weight for clarity */
+    color: #333; /* Dark gray for readability */
+}
+
+/* Error message styling */
+.text-danger {
+    font-size: 0.875rem; /* Smaller font for errors */
+}
+
+/* Input group text (e.g., search icon) */
+.input-group-text {
+    background-color: #f8f9fa; /* Match body background */
+    border-radius: 8px 0 0 8px; /* Rounded left corners */
+}
+
+/* Button styles (logout, save, cancel, search, add-task, edit, delete, login, register, tasks) */
+.logout-btn, .save-btn, .cancel-btn, .search-btn, .add-task-btn, .edit-btn, .delete-btn, .login-btn, .register-btn, .tasks-btn {
+    border-radius: 20px; /* Rounded corners for elegance */
+    padding: 0.5rem 1.5rem; /* Consistent padding */
+    font-weight: 500; /* Medium weight for readability */
+    transition: all 0.3s ease; /* Smooth hover transitions */
+}
+
+/* Hover effects for buttons */
+.logout-btn:hover, .save-btn:hover, .cancel-btn:hover, .search-btn:hover, .add-task-btn:hover, .edit-btn:hover, .delete-btn:hover, .login-btn:hover, .register-btn:hover, .tasks-btn:hover {
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Icon animations within buttons */
+.logout-btn i, .save-btn i, .cancel-btn i, .search-btn i, .add-task-btn i, .edit-btn i, .delete-btn i, .login-btn i, .register-btn i, .tasks-btn i {
+    transition: transform 0.3s ease; /* Smooth icon scaling */
+}
+
+.logout-btn:hover i, .save-btn:hover i, .cancel-btn:hover i, .search-btn:hover i, .add-task-btn:hover i, .edit-btn:hover i, .delete-btn:hover i, .login-btn:hover i, .register-btn:hover i, .tasks-btn:hover i {
+    transform: scale(1.2); /* Slight icon enlargement on hover */
+}
+
+/* Specific hover for auth-related and tasks buttons */
+.logout-btn:hover, .login-btn:hover, .register-btn:hover, .tasks-btn:hover {
+    background-color: #0d6efd; /* Primary blue background */
+    color: white; /* White text for contrast */
+}
+
+/* Login/register button styles in navbar */
+.btn-outline-success, .btn-outline-primary {
+    border-radius: 20px; /* Rounded corners */
+    padding: 0.5rem 1.2rem; /* Slightly smaller padding */
+    font-weight: 500; /* Medium weight */
+    transition: all 0.3s ease; /* Smooth transitions */
+}
+
+.btn-outline-success:hover, .btn-outline-primary:hover {
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Table hover effect for task rows */
+.table-hover tbody tr.task-row:hover {
+    background-color: #f1f3f5; /* Light gray on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Table header styling */
+.table th {
+    font-weight: 600; /* Bold headers */
+    color: #333; /* Dark gray for readability */
+}
+
+/* Pagination styling */
+.page-link {
+    border-radius: 50%; /* Circular pagination buttons */
+    margin: 0 0.25rem; /* Spacing between buttons */
+    padding: 0.5rem 0.75rem; /* Consistent padding */
+    transition: all 0.3s ease; /* Smooth hover transitions */
+}
+
+.page-link:hover {
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.page-item.active .page-link {
+    background-color: #0d6efd; /* Primary blue for active page */
+    border-color: #0d6efd; /* Matching border */
+}
+
+/* Muted text for no-tasks message */
+.text-muted {
+    font-size: 1rem; /* Consistent size */
+}
+
+/* Fade-in animation for cards and containers */
+.animate__fadeIn {
+    animation: fadeIn 0.5s ease-in; /* Smooth fade-in */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); } /* Start state */
+    to { opacity: 1; transform: translateY(0); } /* End state */
+}
+
+/* Link styles for login/register navigation */
+.register-link, .login-link {
+    font-weight: 500; /* Medium weight */
+    transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+.register-link:hover, .login-link:hover {
+    text-decoration: none; /* Remove underline on hover */
+    color: #0056b3; /* Darker blue for hover */
+}
+
+/* Hero section for index page */
+.hero-section {
+    background: linear-gradient(180deg, rgba(227, 242, 253, 0.8), rgba(187, 222, 251, 0.8)); /* Subtle gradient */
+    padding: 4rem 0; /* Spacious padding */
+    border-radius: 12px; /* Rounded corners */
+    margin-bottom: 2rem; /* Space below */
+}
+
+.hero-section .display-4 {
+    color: #333; /* Dark gray for readability */
+    font-weight: 700; /* Bold for emphasis */
+}
+
+.hero-section .lead {
+    color: #555; /* Slightly lighter for contrast */
+    font-size: 1.25rem; /* Larger for readability */
+}
