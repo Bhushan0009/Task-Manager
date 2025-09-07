@@ -17,4 +17,49 @@ A simple Django-based web application for managing personal tasks with user auth
 1. **Clone the Repository**:
    ```bash
    git clone <repository-url>
-   cd TaskManagerProject
+   ```
+
+2. **Create a Virtual Environment**:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Configure the Database**:
+   ```SQL
+   CREATE DATABASE taskmanager;
+   ```
+   Update TaskManagerProject/taskmanager/settings.py with your database credentials:
+   ```python
+   DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'taskmanager',
+        'USER': 'your_username',
+        'PASSWORD': 'your_password',
+        'HOST': 'localhost',
+        'PORT': '3306',
+      }
+   }
+   ```
+
+5. **Apply Migrations**:
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
+6. **Collect Static Files**:
+   ```bash
+   python manage.py collectstatic
+   ```
+
+6. **Run the Development Server**:
+   ```bash
+   python manage.py runserver
+   ```
